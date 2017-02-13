@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module rename-to="travelSite">
-  <!-- Inherit our applications main module.                      -->
-  <inherits name='org.olim.travelSite' />
-
-  <!-- Specify the path to any remote services.                   -->
-  <servlet path="/travelSite/greet" class="org.olim.server.GreetingServiceImpl" />
-
-</module>
