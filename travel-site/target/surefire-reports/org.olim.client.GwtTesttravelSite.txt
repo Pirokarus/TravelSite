@@ -1,0 +1,6 @@
+-------------------------------------------------------------------------------
+Test set: org.olim.client.GwtTesttravelSite
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.908 sec
+testGreetingService(org.olim.client.GwtTesttravelSite)  Time elapsed: 8.882 sec
+testFieldVerifier(org.olim.client.GwtTesttravelSite)  Time elapsed: 0.019 sec
