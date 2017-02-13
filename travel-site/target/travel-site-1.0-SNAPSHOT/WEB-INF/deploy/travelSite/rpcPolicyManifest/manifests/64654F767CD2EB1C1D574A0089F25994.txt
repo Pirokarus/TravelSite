@@ -1,0 +1,2 @@
+serviceClass: org.olim.client.GreetingService
+path: A102F989F1030FD4C3B2E1A040FD9415.gwt.rpc
