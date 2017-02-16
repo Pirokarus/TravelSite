@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-public class travelSite implements EntryPoint {
+public class TravelSite implements EntryPoint {
 
     public void onModuleLoad() {
 
@@ -180,7 +180,7 @@ public class travelSite implements EntryPoint {
                 outDate1.setSize(width,height);
                 inDate1.setSize(width,height);
 
-                
+
             }
         });
 
