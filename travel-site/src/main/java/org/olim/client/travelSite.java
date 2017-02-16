@@ -271,6 +271,10 @@ public class travelSite implements EntryPoint {
                         mainPanel.remove(city);
                     }
                 });
+                countriesSugestBox.setValue("");
+                RuSagestBox.setValue("");
+                BlSagestBox.setValue("");
+                KzSagestBox.setValue("");
             }
         });
     }
