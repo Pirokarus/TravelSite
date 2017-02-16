@@ -5,17 +5,6 @@
 
 <web-app>
 
-  <!-- Servlets -->
-  <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>org.olim.server.GreetingServiceImpl</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/travelSite/greet</url-pattern>
-  </servlet-mapping>
-
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>travelSite.html</welcome-file>

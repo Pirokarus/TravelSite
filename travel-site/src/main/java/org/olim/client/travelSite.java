@@ -30,81 +30,50 @@ public class travelSite implements EntryPoint {
 
         final List<String> RussiaList = new ArrayList<String>();
         RussiaList.add("Москва");
-        RussiaList.add("Санкт-Питербург");
+        RussiaList.add("Санкт-Петербург");
         RussiaList.add("Нижний Новгород");
         RussiaList.add("Сочи");
+
+        for (String citiName:RussiaList) {
+            int index = RussiaList.indexOf(citiName);
+            citiName = citiName + ", Россия";
+            RussiaList.set(index,citiName);
+        }
 
         final List<String> BelarusList = new ArrayList<String>();
         BelarusList.add("Минск");
         BelarusList.add("Брест");
         BelarusList.add("Могилёв");
 
+        for (String citiName:BelarusList) {
+            int index = BelarusList.indexOf(citiName);
+            citiName = citiName + ", Белоруссия";
+            BelarusList.set(index,citiName);
+        }
+
         final List<String> KazahList = new ArrayList<String>();
         KazahList.add("Астана");
         KazahList.add("Алма-Аты");
+
+        for (String citiName:KazahList) {
+            int index = KazahList.indexOf(citiName);
+            citiName = citiName + ", Казахстан";
+            KazahList.set(index,citiName);
+        }
 
         final List<String> AllCities = new ArrayList<String>();
         AllCities.addAll(RussiaList);
         AllCities.addAll(BelarusList);
         AllCities.addAll(KazahList);
 
-        final MultiWordSuggestOracle oracleCountries = new MultiWordSuggestOracle();
-        oracleCountries.addAll(countryList);
-        oracleCountries.setDefaultSuggestionsFromText(countryList);
-
         final MultiWordSuggestOracle oracleAllCities = new MultiWordSuggestOracle();
         oracleAllCities.addAll(AllCities);
         oracleAllCities.setDefaultSuggestionsFromText(AllCities);
 
-        final MultiWordSuggestOracle oracleRussianCities = new MultiWordSuggestOracle();
-        oracleRussianCities.addAll(RussiaList);
-        oracleRussianCities.setDefaultSuggestionsFromText(RussiaList);
-
-        final MultiWordSuggestOracle oracleBelarusCities = new MultiWordSuggestOracle();
-        oracleBelarusCities.addAll(BelarusList);
-        oracleBelarusCities.setDefaultSuggestionsFromText(BelarusList);
-
-        final MultiWordSuggestOracle oracleKazahCities = new MultiWordSuggestOracle();
-        oracleKazahCities.addAll(KazahList);
-        oracleKazahCities.setDefaultSuggestionsFromText(KazahList);
-
-        final SuggestBox RuSagestBox = new SuggestBox(oracleRussianCities);
-        final SuggestBox BlSagestBox = new SuggestBox(oracleBelarusCities);
-        final SuggestBox KzSagestBox = new SuggestBox(oracleKazahCities);
-
-        RuSagestBox.addClickListener(new ClickListener() {
-            @Override
-            public void onClick(Widget widget) {
-                RuSagestBox.showSuggestionList();
-            }
-        });
-
-        BlSagestBox.addClickListener(new ClickListener() {
-            @Override
-            public void onClick(Widget widget) {
-                BlSagestBox.showSuggestionList();
-            }
-        });
-
-        KzSagestBox.addClickListener(new ClickListener() {
-            @Override
-            public void onClick(Widget widget) {
-                KzSagestBox.showSuggestionList();
-            }
-        });
-
-        final SuggestBox countriesSugestBox = new SuggestBox(oracleCountries);
-
-        countriesSugestBox.addClickListener(new ClickListener() {
-            @Override
-            public void onClick(Widget widget) {
-                countriesSugestBox.showSuggestionList();
-            }
-        });
-
-        addPanel.add(countriesSugestBox);
 
         final SuggestBox citiesSugestBox = new SuggestBox(oracleAllCities);
+
+
 
         citiesSugestBox.addClickListener(new ClickListener() {
             @Override
@@ -113,66 +82,14 @@ public class travelSite implements EntryPoint {
             }
         });
 
-        addPanel.add(citiesSugestBox);
-
-        countriesSugestBox.addSelectionHandler(new SelectionHandler<SuggestOracle.Suggestion>() {
-            @Override
-            public void onSelection(SelectionEvent<SuggestOracle.Suggestion> selectionEvent) {
-
-                switch (countriesSugestBox.getValue()) {
-                    case ("Россия"):
-                        addPanel.remove(1);
-                        addPanel.insert(RuSagestBox, 1);
-                        break;
-
-                    case ("Белоруссия"):
-                        addPanel.remove(1);
-                        addPanel.insert(BlSagestBox, 1);
-                        break;
-
-                    case ("Казахстан"):
-                        addPanel.remove(1);
-                        addPanel.insert(KzSagestBox, 1);
-                        break;
-
-                }
-            }
-        });
-
-        citiesSugestBox.addSelectionHandler(new SelectionHandler<SuggestOracle.Suggestion>() {
-            @Override
-            public void onSelection(SelectionEvent<SuggestOracle.Suggestion> selectionEvent) {
-
-                if (RussiaList.contains(citiesSugestBox.getValue())){
-                    countriesSugestBox.setValue("Россия");
-                    RuSagestBox.setValue(citiesSugestBox.getValue());
-                    addPanel.remove(1);
-                    addPanel.insert(RuSagestBox, 1);
-                }
-
-                if (BelarusList.contains(citiesSugestBox.getValue())){
-                    countriesSugestBox.setValue("Белоруссия");
-                    BlSagestBox.setValue(citiesSugestBox.getValue());
-                    addPanel.remove(1);
-                    addPanel.insert(BlSagestBox, 1);
-                }
-
-                if (KazahList.contains(citiesSugestBox.getValue())){
-                    countriesSugestBox.setValue("Казахстан");
-                    KzSagestBox.setValue(citiesSugestBox.getValue());
-                    addPanel.remove(1);
-                    addPanel.insert(KzSagestBox, 1);
-                }
-            }
-        });
-
         final DateBox inDate = new DateBox();
-
-        addPanel.add(inDate);
-
         final DateBox outDate = new DateBox();
 
+        addPanel.add(citiesSugestBox);
+        addPanel.add(inDate);
         addPanel.add(outDate);
+
+        citiesSugestBox.setSize("500","500");
 
         RootPanel.get("MyTravelFieldContainer").add(mainPanel);
         RootPanel.get("MyAddFieldContainer").add(addPanel);
@@ -183,103 +100,38 @@ public class travelSite implements EntryPoint {
             @Override
             public void onClick(ClickEvent clickEvent) {
 
-                final SuggestBox newRuSagestBox = new SuggestBox(oracleRussianCities);
-                final SuggestBox newBlSagestBox = new SuggestBox(oracleBelarusCities);
-                final SuggestBox newKzSagestBox = new SuggestBox(oracleKazahCities);
-
-                newRuSagestBox.addClickListener(new ClickListener() {
-                    @Override
-                    public void onClick(Widget widget) {
-                        newRuSagestBox.showSuggestionList();
-                    }
-                });
-
-                newBlSagestBox.addClickListener(new ClickListener() {
-                    @Override
-                    public void onClick(Widget widget) {
-                        newBlSagestBox.showSuggestionList();
-                    }
-                });
-
-                newKzSagestBox.addClickListener(new ClickListener() {
-                    @Override
-                    public void onClick(Widget widget) {
-                        newKzSagestBox.showSuggestionList();
-                    }
-                });
 
                 final HorizontalPanel city = new HorizontalPanel();
                 final Button delButton = new Button("-");
-                final SuggestBox newCountriesSugestBox = new SuggestBox(oracleCountries);
+                final SuggestBox newCitiesSugestBox = new SuggestBox(oracleAllCities);
                 final DateBox inDate1 = new DateBox();
                 final DateBox outDate1 = new DateBox();
 
-                newCountriesSugestBox.addClickListener(new ClickListener() {
+                newCitiesSugestBox.addClickListener(new ClickListener() {
                     @Override
                     public void onClick(Widget widget) {
-                        newCountriesSugestBox.showSuggestionList();
+                        newCitiesSugestBox.showSuggestionList();
                     }
                 });
 
-                newCountriesSugestBox.setValue(countriesSugestBox.getValue(), true);
+                newCitiesSugestBox.setValue(citiesSugestBox.getValue(), true);
 
                 inDate1.setValue(inDate.getValue());
                 outDate1.setValue(outDate.getValue());
 
                 city.add(delButton);
-                city.add(newCountriesSugestBox);
+                city.add(newCitiesSugestBox);
                 city.add(inDate1);
                 city.add(outDate1);
 
-                switch (countriesSugestBox.getValue()) {
-                    case ("Россия"):
-                        newRuSagestBox.setValue(RuSagestBox.getValue());
-                        city.insert(newRuSagestBox, 2);
-                        break;
-
-                    case ("Белоруссия"):
-                        newBlSagestBox.setValue(BlSagestBox.getValue());
-                        city.insert(newBlSagestBox, 2);
-                        break;
-
-                    case ("Казахстан"):
-                        newKzSagestBox.setValue(KzSagestBox.getValue());
-                        city.insert(newKzSagestBox, 2);
-                        break;
-                }
-
-                newCountriesSugestBox.addSelectionHandler(new SelectionHandler<SuggestOracle.Suggestion>() {
-                    @Override
-                    public void onSelection(SelectionEvent<SuggestOracle.Suggestion> selectionEvent) {
-
-                        switch (newCountriesSugestBox.getValue()) {
-                            case ("Россия"):
-                                city.remove(2);
-                                city.insert(newRuSagestBox, 2);
-                                break;
-
-                            case ("Белоруссия"):
-                                city.remove(2);
-                                city.insert(newBlSagestBox, 2);
-                                break;
-
-                            case ("Казахстан"):
-                                city.remove(2);
-                                city.insert(newKzSagestBox, 2);
-                                break;
-
-                        }
-                    }
-                });
-
-                if(countryList.contains(countriesSugestBox.getValue())) {
+                if(AllCities.contains(citiesSugestBox.getValue())) {
 
                     mainPanel.add(city);
                     errLabel.setText("");
                 }
                 else
                 {
-                    errLabel.setText("Введите страну");
+                    errLabel.setText("Введите пункт назначения");
                 }
 
                 delButton.addClickHandler(new ClickHandler() {
@@ -288,10 +140,7 @@ public class travelSite implements EntryPoint {
                         mainPanel.remove(city);
                     }
                 });
-                countriesSugestBox.setValue("");
-                RuSagestBox.setValue("");
-                BlSagestBox.setValue("");
-                KzSagestBox.setValue("");
+                citiesSugestBox.setValue("");
             }
         });
     }
