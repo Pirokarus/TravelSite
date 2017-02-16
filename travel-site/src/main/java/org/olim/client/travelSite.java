@@ -18,6 +18,7 @@ public class travelSite implements EntryPoint {
 
     public void onModuleLoad() {
 
+        final Label errLabel = new Label("");
         final VerticalPanel mainPanel = new VerticalPanel();
         final HorizontalPanel addPanel = new HorizontalPanel();
         final Button addButton = new Button("Добавить");
@@ -42,7 +43,7 @@ public class travelSite implements EntryPoint {
         KazahList.add("Астана");
         KazahList.add("Алма-Аты");
 
-        List<String> AllCities = new ArrayList<String>();
+        final List<String> AllCities = new ArrayList<String>();
         AllCities.addAll(RussiaList);
         AllCities.addAll(BelarusList);
         AllCities.addAll(KazahList);
@@ -176,6 +177,7 @@ public class travelSite implements EntryPoint {
         RootPanel.get("MyTravelFieldContainer").add(mainPanel);
         RootPanel.get("MyAddFieldContainer").add(addPanel);
         RootPanel.get("MyTravelAddButtonContainer").add(addButton);
+        RootPanel.get("MyTravelErrLabel").add(errLabel);
 
         addButton.addClickHandler(new ClickHandler() {
             @Override
@@ -263,7 +265,15 @@ public class travelSite implements EntryPoint {
                     }
                 });
 
-                mainPanel.add(city);
+                if(countryList.contains(countriesSugestBox.getValue())) {
+
+                    mainPanel.add(city);
+                    errLabel.setText("");
+                }
+                else
+                {
+                    errLabel.setText("Введите страну");
+                }
 
                 delButton.addClickHandler(new ClickHandler() {
                     @Override
