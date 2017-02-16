@@ -214,6 +214,13 @@ public class travelSite implements EntryPoint {
                 final DateBox inDate1 = new DateBox();
                 final DateBox outDate1 = new DateBox();
 
+                newCountriesSugestBox.addClickListener(new ClickListener() {
+                    @Override
+                    public void onClick(Widget widget) {
+                        newCountriesSugestBox.showSuggestionList();
+                    }
+                });
+
                 newCountriesSugestBox.setValue(countriesSugestBox.getValue(), true);
 
                 inDate1.setValue(inDate.getValue());
