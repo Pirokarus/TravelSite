@@ -18,10 +18,33 @@ public class travelSite implements EntryPoint {
 
     public void onModuleLoad() {
 
+        final String height = "30px";
+        final String sugHeight = "28px";
+        final String butHeight = "36px";
+        final String labelHeight = "30px";
+        final String labelWidth = "205px";
+        final String empLabelWidth = "13px";
+        final String emptLabelWidth = "20px";
+        final String width = "200px";
+        final String butWidth = "15px";
+
         final Label errLabel = new Label("");
         final VerticalPanel mainPanel = new VerticalPanel();
         final HorizontalPanel addPanel = new HorizontalPanel();
         final Button addButton = new Button("Добавить");
+
+        final HorizontalPanel LabelPanel = new HorizontalPanel();
+        final Label emptLabel = new Label("");
+        final Label cityLabel = new Label("Пункт назначения");
+        final Label inLabel = new Label("Дата прибытия");
+        final Label outLabel = new Label("Дата отъезда");
+
+        LabelPanel.add(emptLabel);
+        LabelPanel.add(cityLabel);
+        LabelPanel.add(inLabel);
+        LabelPanel.add(outLabel);
+
+        mainPanel.add(LabelPanel);
 
         final List<String> countryList = new ArrayList<String>();
         countryList.add("Россия");
@@ -85,11 +108,12 @@ public class travelSite implements EntryPoint {
         final DateBox inDate = new DateBox();
         final DateBox outDate = new DateBox();
 
+        final Label emLabel = new Label("");
+
+        addPanel.add(emLabel);
         addPanel.add(citiesSugestBox);
         addPanel.add(inDate);
         addPanel.add(outDate);
-
-        citiesSugestBox.setSize("500","500");
 
         RootPanel.get("MyTravelFieldContainer").add(mainPanel);
         RootPanel.get("MyAddFieldContainer").add(addPanel);
@@ -126,8 +150,18 @@ public class travelSite implements EntryPoint {
 
                 if(AllCities.contains(citiesSugestBox.getValue())) {
 
-                    mainPanel.add(city);
-                    errLabel.setText("");
+                    if ((inDate.getValue().before(outDate.getValue()))||inDate.getValue().equals(outDate.getValue())){
+                        mainPanel.add(city);
+                        errLabel.setText("");
+
+                        citiesSugestBox.setValue("");
+                        inDate.setValue(outDate.getValue());
+                        outDate.setValue(null);
+                    }
+                    else {
+                        errLabel.setText("Введите корректные даты прибытия и отъезда");
+
+                    }
                 }
                 else
                 {
@@ -140,8 +174,24 @@ public class travelSite implements EntryPoint {
                         mainPanel.remove(city);
                     }
                 });
-                citiesSugestBox.setValue("");
+
+                delButton.setSize(butWidth,butHeight);
+                newCitiesSugestBox.setSize(width,sugHeight);
+                outDate1.setSize(width,height);
+                inDate1.setSize(width,height);
+
+                
             }
         });
+
+        emLabel.setSize(empLabelWidth,butHeight);
+        citiesSugestBox.setSize(width,sugHeight);
+        inDate.setSize(width,height);
+        outDate.setSize(width,height);
+
+        emptLabel.setSize(emptLabelWidth,labelHeight);
+        cityLabel.setSize(labelWidth,labelHeight);
+        inLabel.setSize(labelWidth,labelHeight);
+        outLabel.setSize(labelWidth,labelHeight);
     }
 }
