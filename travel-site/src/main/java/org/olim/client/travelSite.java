@@ -1,10 +1,12 @@
 package org.olim.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.dom.client.IFrameElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.datepicker.client.DateBox;
 
@@ -22,10 +24,10 @@ public class TravelSite implements EntryPoint {
         final String sugHeight = "28px";
         final String butHeight = "36px";
         final String labelHeight = "30px";
-        final String labelWidth = "205px";
+        final String labelWidth = "155px";
         final String empLabelWidth = "13px";
         final String emptLabelWidth = "20px";
-        final String width = "200px";
+        final String width = "150px";
         final String butWidth = "15px";
 
         final Label errLabel = new Label("");
@@ -39,6 +41,18 @@ public class TravelSite implements EntryPoint {
         final Label inLabel = new Label("Дата прибытия");
         final Label outLabel = new Label("Дата отъезда");
 
+        final Frame map = new Frame("https://www.google.com/maps/embed/v1/place?key=AIzaSyB2XEJDcsD1Yn3eC-pZeStmzISqUEv6dG8 &"+ "q=Moscow");
+        map.setSize("700px","700px");
+        final HorizontalPanel sitePanel = new HorizontalPanel();
+        sitePanel.setStyleName("sitePanel");
+        sitePanel.add(map);
+        final VerticalPanel cityPanel = new VerticalPanel();
+        cityPanel.add(mainPanel);
+        cityPanel.add(addPanel);
+        cityPanel.add(addButton);
+        sitePanel.add(cityPanel);
+
+        mainPanel.add(map);
         LabelPanel.add(emptLabel);
         LabelPanel.add(cityLabel);
         LabelPanel.add(inLabel);
@@ -93,10 +107,7 @@ public class TravelSite implements EntryPoint {
         oracleAllCities.addAll(AllCities);
         oracleAllCities.setDefaultSuggestionsFromText(AllCities);
 
-
         final SuggestBox citiesSugestBox = new SuggestBox(oracleAllCities);
-
-
 
         citiesSugestBox.addClickListener(new ClickListener() {
             @Override
@@ -107,6 +118,8 @@ public class TravelSite implements EntryPoint {
 
         final DateBox inDate = new DateBox();
         final DateBox outDate = new DateBox();
+        inDate.setFormat(new DateBox.DefaultFormat(DateTimeFormat.getLongDateFormat()));
+        outDate.setFormat(new DateBox.DefaultFormat(DateTimeFormat.getLongDateFormat()));
 
         final Label emLabel = new Label("");
 
@@ -114,10 +127,12 @@ public class TravelSite implements EntryPoint {
         addPanel.add(citiesSugestBox);
         addPanel.add(inDate);
         addPanel.add(outDate);
+        cityPanel.setStyleName("sitePanel");
+        mainPanel.setStyleName("sitePanel");
 
-        RootPanel.get("MyTravelFieldContainer").add(mainPanel);
-        RootPanel.get("MyAddFieldContainer").add(addPanel);
-        RootPanel.get("MyTravelAddButtonContainer").add(addButton);
+        RootPanel.get("MyTravelFieldContainer").add(map);
+        RootPanel.get("MyAddFieldContainer").add(cityPanel);
+        //RootPanel.get("MyTravelAddButtonContainer").add(addButton);
         RootPanel.get("MyTravelErrLabel").add(errLabel);
 
         addButton.addClickHandler(new ClickHandler() {
