@@ -1,15 +1,17 @@
 package org.olim.client.data;
 
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.event.shared.SimpleEventBus;
+import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.Event;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 
 public class ModelBase {
 
     private final EventBus eventBus;
-
-    public ModelBase(EventBus eventBus){
-        this.eventBus = eventBus;
+@Inject
+    public ModelBase(){
+        this.eventBus = new SimpleEventBus();
     }
 
     protected final void fireEvent(Event<?> event) {

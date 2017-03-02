@@ -1,4 +1,4 @@
-package org.olim.client.data;
+package org.olim.client.config;
 
 
 
