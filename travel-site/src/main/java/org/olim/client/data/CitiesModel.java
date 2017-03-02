@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CitiesModel extends HorizontalPanel{
     @Inject
-    public CitiesModel() {
+    public HorizontalPanel citiesModelStart() {
         final String height = "30px";
         final String sugHeight = "28px";
         final String butHeight = "36px";
@@ -49,7 +49,7 @@ public class CitiesModel extends HorizontalPanel{
         cityPanel.add(addPanel);
         cityPanel.add(addButton);
         //sitePanel.add(map);
-        add(cityPanel);
+        this.add(cityPanel);
         LabelPanel.add(emptLabel);
         LabelPanel.add(cityLabel);
         LabelPanel.add(inLabel);
@@ -200,5 +200,6 @@ public class CitiesModel extends HorizontalPanel{
         cityLabel.setSize(labelWidth,labelHeight);
         inLabel.setSize(labelWidth,labelHeight);
         outLabel.setSize(labelWidth,labelHeight);
+        return this;
     }
 }

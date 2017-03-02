@@ -24,7 +24,7 @@ public class TravelSite implements EntryPoint {
         final Injector injector = Injector.INSTANCE;
 
 
-        RootPanel.get("MyTravelFieldContainer").add(injector.getCitiesModel());
+        RootPanel.get("MyTravelFieldContainer").add(injector.getCitiesModel().citiesModelStart());
 
         //RootPanel.get("MyAddFieldContainer").add(cityPanel);
         //RootPanel.get("MyTravelAddButtonContainer").add(addButton);
