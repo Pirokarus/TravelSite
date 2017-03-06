@@ -2,9 +2,11 @@ package org.olim.client.data;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
-import com.google.inject.Inject;
+
 import com.google.web.bindery.event.shared.Event;
 import com.google.web.bindery.event.shared.HandlerRegistration;
+
+import javax.inject.Inject;
 
 public class ModelBase {
 
