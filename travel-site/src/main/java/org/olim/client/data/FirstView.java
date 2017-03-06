@@ -18,10 +18,7 @@ public class FirstView extends HorizontalPanel {
         firstModel.addFirstModelChangedHandler(new MyFirstModelChangedHandler());
 
 
-
     }
-
-
 
     private class MyFirstModelChangedHandler implements FirstModelChangedEventHandler{
         @Override
