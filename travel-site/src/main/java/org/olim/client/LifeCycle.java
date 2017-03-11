@@ -2,29 +2,30 @@ package org.olim.client;
 
 
 import com.google.web.bindery.event.shared.EventBus;
-import org.olim.client.data.FirstController;
-import org.olim.client.data.FirstModel;
-import org.olim.client.data.FirstModelLoadCommand;
-import org.olim.client.data.FirstView;
+import org.olim.client.data.CitiesListDownloadController;
+import org.olim.client.data.CitiesListModel;
+import org.olim.client.data.CitiesModelLoadCommand;
+import org.olim.client.data.View;
 
 import javax.inject.Inject;
 
 public class LifeCycle {
-    public EventBus eventBus;
-    public FirstModel firstModel;
-    public FirstView firstView;
-    public FirstController firstController;
+    private EventBus eventBus;
+    private CitiesListModel citiesListModel;
+    private View view;
+    private CitiesListDownloadController citiesListDownloadController;
 
     @Inject
-    public LifeCycle(EventBus eventBus, FirstModel firstModel, FirstView firstView, FirstController firstController) {
+    public LifeCycle(EventBus eventBus, CitiesListModel citiesListModel, View view, CitiesListDownloadController citiesListDownloadController) {
         this.eventBus = eventBus;
-        this.firstModel = firstModel;
-        this.firstView = firstView;
-        this.firstController = firstController;
+        this.citiesListDownloadController = citiesListDownloadController;
+        this.citiesListModel = citiesListModel;
+        this.view = view;
+
     }
 
     public void start(){
-        eventBus.fireEvent(FirstModelLoadCommand.create());
+        eventBus.fireEvent(CitiesModelLoadCommand.create());
 
     }
 

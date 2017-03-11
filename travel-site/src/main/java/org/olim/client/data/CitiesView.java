@@ -2,30 +2,16 @@ package org.olim.client.data;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.datepicker.client.DateBox;
-import com.google.inject.Inject;
-import com.google.web.bindery.event.shared.Event;
-import com.google.web.bindery.event.shared.Event.Type;
-import com.google.web.bindery.event.shared.HandlerRegistration;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CitiesModel extends HorizontalPanel{
-    @Inject
-    public HorizontalPanel citiesModelStart() {
-        final String height = "30px";
-        final String sugHeight = "28px";
-        final String butHeight = "36px";
-        final String labelHeight = "30px";
-        final String labelWidth = "155px";
-        final String empLabelWidth = "13px";
-        final String emptLabelWidth = "20px";
-        final String width = "150px";
-        final String butWidth = "15px";
+public class CitiesView extends HorizontalPanel {
+
+    public HorizontalPanel citiesModelStart(List<CountryBox> countriesList) {
 
         final Label errLabel = new Label("");
         final VerticalPanel mainPanel = new VerticalPanel();
@@ -57,48 +43,13 @@ public class CitiesModel extends HorizontalPanel{
 
         mainPanel.add(LabelPanel);
 
-        final List<String> countryList = new ArrayList<String>();
-        countryList.add("Россия");
-        countryList.add("Белоруссия");
-        countryList.add("Казахстан");
-
-        final List<String> RussiaList = new ArrayList<String>();
-        RussiaList.add("Москва");
-        RussiaList.add("Санкт-Петербург");
-        RussiaList.add("Нижний Новгород");
-        RussiaList.add("Сочи");
-
-        for (String citiName:RussiaList) {
-            int index = RussiaList.indexOf(citiName);
-            citiName = citiName + ", Россия";
-            RussiaList.set(index,citiName);
-        }
-
-        final List<String> BelarusList = new ArrayList<String>();
-        BelarusList.add("Минск");
-        BelarusList.add("Брест");
-        BelarusList.add("Могилёв");
-
-        for (String citiName:BelarusList) {
-            int index = BelarusList.indexOf(citiName);
-            citiName = citiName + ", Белоруссия";
-            BelarusList.set(index,citiName);
-        }
-
-        final List<String> KazahList = new ArrayList<String>();
-        KazahList.add("Астана");
-        KazahList.add("Алма-Аты");
-
-        for (String citiName:KazahList) {
-            int index = KazahList.indexOf(citiName);
-            citiName = citiName + ", Казахстан";
-            KazahList.set(index,citiName);
-        }
-
         final List<String> AllCities = new ArrayList<String>();
-        AllCities.addAll(RussiaList);
-        AllCities.addAll(BelarusList);
-        AllCities.addAll(KazahList);
+        for (CountryBox country : countriesList) {
+            List<String> cities = country.getCities();
+            for (String city : cities) {
+                AllCities.add(city + " ," + country.getCounrty());
+            }
+        }
 
         final MultiWordSuggestOracle oracleAllCities = new MultiWordSuggestOracle();
         oracleAllCities.addAll(AllCities);
@@ -155,23 +106,20 @@ public class CitiesModel extends HorizontalPanel{
                 city.add(inDate1);
                 city.add(outDate1);
 
-                if(AllCities.contains(citiesSugestBox.getValue())) {
+                if (AllCities.contains(citiesSugestBox.getValue())) {
 
-                    if ((inDate.getValue().before(outDate.getValue()))||inDate.getValue().equals(outDate.getValue())){
+                    if ((inDate.getValue().before(outDate.getValue())) || inDate.getValue().equals(outDate.getValue())) {
                         mainPanel.add(city);
                         errLabel.setText("");
 
                         citiesSugestBox.setValue("");
                         inDate.setValue(outDate.getValue());
                         outDate.setValue(null);
-                    }
-                    else {
+                    } else {
                         errLabel.setText("Введите корректные даты прибытия и отъезда");
 
                     }
-                }
-                else
-                {
+                } else {
                     errLabel.setText("Введите пункт назначения");
                 }
 
@@ -182,24 +130,10 @@ public class CitiesModel extends HorizontalPanel{
                     }
                 });
 
-                delButton.setSize(butWidth,butHeight);
-                newCitiesSugestBox.setSize(width,sugHeight);
-                outDate1.setSize(width,height);
-                inDate1.setSize(width,height);
-
-
             }
         });
 
-        emLabel.setSize(empLabelWidth,butHeight);
-        citiesSugestBox.setSize(width,sugHeight);
-        inDate.setSize(width,height);
-        outDate.setSize(width,height);
 
-        emptLabel.setSize(emptLabelWidth,labelHeight);
-        cityLabel.setSize(labelWidth,labelHeight);
-        inLabel.setSize(labelWidth,labelHeight);
-        outLabel.setSize(labelWidth,labelHeight);
         return this;
     }
 }
