@@ -23,6 +23,7 @@ public class TestCountriesList {
         Kazakhstan.add("Almaty");
         Kazakhstan.add("Astana");
         Kazakhstan.add("Shymkent");
+        out.add(Kazakhstan);
         return out;
     }
 }
