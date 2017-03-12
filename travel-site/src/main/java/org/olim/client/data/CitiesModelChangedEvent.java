@@ -20,6 +20,6 @@ public class CitiesModelChangedEvent extends GwtEvent<CitiesModelChangedEventHan
 
     @Override
     protected void dispatch(CitiesModelChangedEventHandler handler) {
-        handler.onFirstModelChanged(this);
+        handler.onCitiesModelChanged(this);
     }
 }

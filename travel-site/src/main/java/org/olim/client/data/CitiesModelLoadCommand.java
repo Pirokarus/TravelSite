@@ -19,6 +19,6 @@ public class CitiesModelLoadCommand extends GwtEvent<CitiesModelLoadCommandHandl
 
     @Override
     protected void dispatch(CitiesModelLoadCommandHandler handler) {
-        handler.onFirstModelLoadComand(this);
+        handler.onCitiesModelLoadComand(this);
     }
 }

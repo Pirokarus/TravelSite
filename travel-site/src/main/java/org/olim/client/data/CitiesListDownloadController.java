@@ -23,10 +23,9 @@ public class CitiesListDownloadController {
     private class MyCitiesModelCommandHandler implements CitiesModelLoadCommandHandler {
 
         @Override
-        public void onFirstModelLoadComand(CitiesModelLoadCommand command) {
-
+        public void onCitiesModelLoadComand(CitiesModelLoadCommand command) {
             citiesListModel.setData(new TestCountriesList().getCountryBoxes());
-
         }
+
     }
 }
