@@ -11,6 +11,7 @@ public class CitiesListModel extends ModelBase {
 
     private List<CountryBox> countries;
 
+
     public void setData(List<CountryBox> countries){
         if(this.countries!=countries){
             this.countries=countries;

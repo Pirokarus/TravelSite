@@ -15,8 +15,9 @@ public class InjectorModule extends AbstractGinModule {
         bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
         bind(CitiesListModel.class).in(Singleton.class);
         bind(PersonalPathModel.class).in(Singleton.class);
+        bind(PersonalPathController.class).in(Singleton.class);
         bind(View.class).in(Singleton.class);
         bind(CitiesListDownloadController.class).in(Singleton.class);
-        bind(PersonalPathController.class).in(Singleton.class);
+
     }
 }

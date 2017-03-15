@@ -25,7 +25,7 @@ public class PersonalPathController {
         public void onPersonalPathUploadComand(PersonalPathUploadComand command) {
 
             pathModel.setCityList(view.getPath());
-            RootPanel.get("MyAddFieldContainer").add(new Label("+++kjhbbkvg"));
+            RootPanel.get("MyAddFieldContainer").add(new Label("+++kjhbbkbjhbjhvgvjvvg"));
         }
     }
 }

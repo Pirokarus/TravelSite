@@ -1,5 +1,6 @@
 package org.olim.client.data;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.SelectionEvent;
@@ -14,6 +15,7 @@ import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.Event;
 import com.google.web.bindery.event.shared.Event.Type;
 import com.google.web.bindery.event.shared.HandlerRegistration;
+import org.olim.client.data.localization.AppMessages;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,6 +24,7 @@ import java.util.List;
 public class CitiesView extends HorizontalPanel{
 
     private List<Station> path;
+    private AppMessages messages = GWT.create(AppMessages.class);
 
     public CitiesView(List<CountryBox> countriesList) {
 
@@ -30,7 +33,7 @@ public class CitiesView extends HorizontalPanel{
         final Label errLabel = new Label("");
         final VerticalPanel mainPanel = new VerticalPanel();
         final HorizontalPanel addPanel = new HorizontalPanel();
-        final Button addButton = new Button("Добавить");
+        final Button addButton = new Button(messages.addButton());
 
         final HorizontalPanel LabelPanel = new HorizontalPanel();
         final Label emptLabel = new Label("");
@@ -41,7 +44,6 @@ public class CitiesView extends HorizontalPanel{
         //final Frame map = new Frame("https://www.google.com/maps/embed/v1/place?key=AIzaSyB2XEJDcsD1Yn3eC-pZeStmzISqUEv6dG8 &"+ "q=Moscow");
         //map.setSize("700px","700px");
 
-        setStyleName("sitePanel");
         //map.setUrl("https://www.google.com/maps/embed/v1/place?key=AIzaSyB2XEJDcsD1Yn3eC-pZeStmzISqUEv6dG8&"+ "q=Kazan");
 
         final VerticalPanel cityPanel = new VerticalPanel();
@@ -89,8 +91,6 @@ public class CitiesView extends HorizontalPanel{
         addPanel.add(citiesSugestBox);
         addPanel.add(inDate);
         addPanel.add(outDate);
-        cityPanel.setStyleName("sitePanel");
-        mainPanel.setStyleName("sitePanel");
 
         addButton.addClickHandler(new ClickHandler() {
             @Override
