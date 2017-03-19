@@ -13,27 +13,27 @@ public class Station {
         this.outDate = outDate;
     }
 
-    public void setStation(String station) {
-        this.station = station;
-    }
-
-    public void setInDate(Date inDate) {
-        this.inDate = inDate;
-    }
-
-    public void setOutDate(Date outDate) {
-        this.outDate = outDate;
-    }
-
     public String getStation() {
         return station;
+    }
+
+    public void setStation(String station) {
+        this.station = station;
     }
 
     public Date getInDate() {
         return inDate;
     }
 
+    public void setInDate(Date inDate) {
+        this.inDate = inDate;
+    }
+
     public Date getOutDate() {
         return outDate;
+    }
+
+    public void setOutDate(Date outDate) {
+        this.outDate = outDate;
     }
 }

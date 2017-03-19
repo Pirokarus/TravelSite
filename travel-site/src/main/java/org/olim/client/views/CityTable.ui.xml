@@ -1,0 +1,19 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:cl="urn:import:org.olim.client.views"
+>
+
+    <g:HTMLPanel>
+        <div align="centr">
+            <g:VerticalPanel>
+                <g:VerticalPanel ui:field="cityPanel">
+                </g:VerticalPanel>
+                <cl:CityLine ui:field="addCityLine"/>
+                <g:HorizontalPanel>
+                    <g:Button ui:field="addButton"/>
+                    <g:Button ui:field="doneButton"/>
+                </g:HorizontalPanel>
+            </g:VerticalPanel>
+        </div>
+    </g:HTMLPanel>
+</ui:UiBinder>

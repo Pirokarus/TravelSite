@@ -3,25 +3,18 @@ package org.olim.client.data;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.logical.shared.SelectionEvent;
-import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.datepicker.client.DateBox;
-import com.google.inject.Inject;
-import com.google.web.bindery.event.shared.Event;
-import com.google.web.bindery.event.shared.Event.Type;
-import com.google.web.bindery.event.shared.HandlerRegistration;
-import org.olim.client.data.localization.AppMessages;
+import org.olim.client.AppMessages;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class CitiesView extends HorizontalPanel{
+public class CitiesView extends HorizontalPanel {
 
     private List<Station> path;
     private AppMessages messages = GWT.create(AppMessages.class);
@@ -29,6 +22,7 @@ public class CitiesView extends HorizontalPanel{
     public CitiesView(List<CountryBox> countriesList) {
 
         path = new ArrayList<>();
+
 
         final Label errLabel = new Label("");
         final VerticalPanel mainPanel = new VerticalPanel();
@@ -60,9 +54,9 @@ public class CitiesView extends HorizontalPanel{
         mainPanel.add(LabelPanel);
 
         final List<String> AllCities = new ArrayList<String>();
-        for (CountryBox country:countriesList) {
+        for (CountryBox country : countriesList) {
             List<String> cities = country.getCities();
-            for (String city: cities){
+            for (String city : cities) {
                 AllCities.add(city + " ," + country.getCounrty());
             }
         }
@@ -114,7 +108,7 @@ public class CitiesView extends HorizontalPanel{
                 inDate1.setValue(inDate.getValue());
                 outDate1.setValue(outDate.getValue());
 
-                final Station station = new Station(newCitiesSugestBox.getValue(),inDate.getValue(),outDate.getValue());
+                final Station station = new Station(newCitiesSugestBox.getValue(), inDate.getValue(), outDate.getValue());
                 path.add(station);
 
                 city.add(delButton);
@@ -122,23 +116,20 @@ public class CitiesView extends HorizontalPanel{
                 city.add(inDate1);
                 city.add(outDate1);
 
-                if(AllCities.contains(citiesSugestBox.getValue())) {
+                if (AllCities.contains(citiesSugestBox.getValue())) {
 
-                    if ((inDate.getValue().before(outDate.getValue()))||inDate.getValue().equals(outDate.getValue())){
+                    if ((inDate.getValue().before(outDate.getValue())) || inDate.getValue().equals(outDate.getValue())) {
                         mainPanel.add(city);
                         errLabel.setText("");
 
                         citiesSugestBox.setValue("");
                         inDate.setValue(outDate.getValue());
                         outDate.setValue(null);
-                    }
-                    else {
+                    } else {
                         errLabel.setText("Введите корректные даты прибытия и отъезда");
 
                     }
-                }
-                else
-                {
+                } else {
                     errLabel.setText("Введите пункт назначения");
                 }
 

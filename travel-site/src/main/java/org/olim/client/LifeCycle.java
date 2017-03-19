@@ -24,7 +24,7 @@ public class LifeCycle {
         this.pathController = pathController;
     }
 
-    public void start(){
+    public void start() {
         eventBus.fireEvent(CitiesModelLoadCommand.create());
 
     }

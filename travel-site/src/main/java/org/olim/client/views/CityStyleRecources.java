@@ -1,8 +1,12 @@
 package org.olim.client.views;
+
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 
 public interface CityStyleRecources extends ClientBundle {
+
+    @Source("CityLine.css")
+    MyCss style();
 
     public interface MyCss extends CssResource {
         String cityStyle();
@@ -11,6 +15,4 @@ public interface CityStyleRecources extends ClientBundle {
 
         String removeButton();
     }
-    @Source("CityLine.css")
-    MyCss style();
 }

@@ -2,13 +2,14 @@ package org.olim.client.data;
 
 import com.google.gwt.event.shared.GwtEvent;
 
-public class PersonalPathUploadComand extends GwtEvent<PersonalPathUploadComandHandler>{
+public class PersonalPathUploadComand extends GwtEvent<PersonalPathUploadComandHandler> {
 
     public final static Type<PersonalPathUploadComandHandler> TYPE = new Type<>();
 
-    private PersonalPathUploadComand(){}
+    private PersonalPathUploadComand() {
+    }
 
-    public static PersonalPathUploadComand create(){
+    public static PersonalPathUploadComand create() {
         return new PersonalPathUploadComand();
     }
 

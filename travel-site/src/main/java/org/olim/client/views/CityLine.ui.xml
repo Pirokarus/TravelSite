@@ -1,15 +1,15 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
-             xmlns:res="urn:with:com.mySampleApplication.client.LoginResources">>
+             xmlns:g='urn:import:com.google.gwt.user.datepicker.client'
+             xmlns:res='urn:import:org.olim.client.views.CityStyleRecources'
+>
     <ui:with type="org.olim.client.views.CityStyleRecources" field="res"/>
     <gwt:HTMLPanel>
         <div align="center">
-            <gwt:HorizontalPanel res:styleName="{res.style.background}">
-                <gwt:Button ui:field="removeButton" text="Remove"
-                            res:styleName="{res.style.removeButton}" />
-                <gwt:SuggestBox ui:field="cityField" res:styleName="{res.style.cityStyle}" />
-                <gwt:DateLabel ui:field="inDateField" res:styleName="{res.style.cityStyle}"/>
-                <gwt:DateLabel ui:field="outDateField" res:styleName="{res.style.cityStyle}"/>
+            <gwt:HorizontalPanel>
+                <gwt:SuggestBox ui:field="cityField"  />
+                <g:DateBox ui:field="inDateField"/>
+                <g:DateBox ui:field="outDateField"/>
             </gwt:HorizontalPanel>
         </div>
     </gwt:HTMLPanel>

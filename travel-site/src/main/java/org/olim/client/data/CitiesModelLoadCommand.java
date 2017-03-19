@@ -6,9 +6,10 @@ public class CitiesModelLoadCommand extends GwtEvent<CitiesModelLoadCommandHandl
 
     public final static Type<CitiesModelLoadCommandHandler> TYPE = new Type<>();
 
-    private CitiesModelLoadCommand(){}
+    private CitiesModelLoadCommand() {
+    }
 
-    public static CitiesModelLoadCommand create(){
+    public static CitiesModelLoadCommand create() {
         return new CitiesModelLoadCommand();
     }
 

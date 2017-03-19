@@ -12,27 +12,25 @@ public class CitiesListModel extends ModelBase {
     private List<CountryBox> countries;
 
 
-    public void setData(List<CountryBox> countries){
-        if(this.countries!=countries){
-            this.countries=countries;
+    @Inject
+    public CitiesListModel(EventBus eventBus) {
+
+    }
+
+    public List<CountryBox> getData() {
+        return countries;
+    }
+
+    public void setData(List<CountryBox> countries) {
+        if (this.countries != countries) {
+            this.countries = countries;
 
             fireEvent(CitiesModelChangedEvent.create());
         }
     }
 
-    public List<CountryBox> getData(){
-        return countries;
-    }
-
-
-
-    @Inject
-    public CitiesListModel(EventBus eventBus){
-
-    }
-
-    public final HandlerRegistration addFirstModelChangedHandler(CitiesModelChangedEventHandler handler){
-        return addHandler(CitiesModelChangedEvent.TYPE,handler);
+    public final HandlerRegistration addFirstModelChangedHandler(CitiesModelChangedEventHandler handler) {
+        return addHandler(CitiesModelChangedEvent.TYPE, handler);
     }
 
 }

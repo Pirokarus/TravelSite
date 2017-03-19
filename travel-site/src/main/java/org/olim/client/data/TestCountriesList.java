@@ -1,14 +1,15 @@
 package org.olim.client.data;
 
 import com.google.gwt.core.client.GWT;
-import org.olim.client.data.localization.AppMessages;
+import org.olim.client.AppMessages;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TestCountriesList {
     private AppMessages messages = GWT.create(AppMessages.class);
-    public List<CountryBox> getCountryBoxes(){
+
+    public List<CountryBox> getCountryBoxes() {
         List<CountryBox> out = new ArrayList<>();
 
         CountryBox Russia = new CountryBox(messages.russia());

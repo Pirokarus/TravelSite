@@ -4,26 +4,28 @@ package org.olim.client.data;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.web.bindery.event.shared.EventBus;
-import org.olim.client.data.localization.AppMessages;
+import org.olim.client.AppMessages;
 
 import javax.inject.Inject;
 import java.util.List;
-import java.util.Locale;
-import java.util.*;
 
 public class View extends HorizontalPanel {
 
-    private EventBus eventBus;
     private static CitiesListModel citiesListModel;
+    private EventBus eventBus;
     private List<Station> path;
     private String lang = "en";
     private AppMessages messages = GWT.create(AppMessages.class);
 
     @Inject
-    public View(CitiesListModel citiesListModel, EventBus eventBus){
+    public View(CitiesListModel citiesListModel, EventBus eventBus) {
         this.citiesListModel = citiesListModel;
+        this.eventBus = eventBus;
         citiesListModel.addFirstModelChangedHandler(new MyCitiesModelChangedHandler());
         RootPanel.get("MyTravelFieldContainer").add(this);
 
@@ -34,7 +36,7 @@ public class View extends HorizontalPanel {
     }
 
     private class MyCitiesModelChangedHandler implements CitiesModelChangedEventHandler {
-      @Override
+        @Override
         public void onCitiesModelChanged(CitiesModelChangedEvent event) {
 
             VerticalPanel cityPanel = new VerticalPanel();
@@ -47,8 +49,8 @@ public class View extends HorizontalPanel {
             readyButton.addClickHandler(new ClickHandler() {
                 @Override
                 public void onClick(ClickEvent event) {
-                     path = cityView.getPath();
-                     eventBus.fireEvent(PersonalPathUploadComand.create());
+                    path = cityView.getPath();
+                    eventBus.fireEvent(PersonalPathUploadComand.create());
                 }
             });
 

@@ -1,4 +1,4 @@
-package org.olim.client.data.localization;
+package org.olim.client;
 
 import com.google.gwt.i18n.client.Messages;
 

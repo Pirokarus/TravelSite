@@ -1,22 +1,20 @@
 package org.olim.client.data;
 
 
-
-
 import com.google.web.bindery.event.shared.EventBus;
 
 import javax.inject.Inject;
 
 public class CitiesListDownloadController {
 
-    private CitiesListModel citiesListModel;
     private final EventBus eventBus;
+    private CitiesListModel citiesListModel;
 
     @Inject
-    public CitiesListDownloadController(CitiesListModel citiesListModel, EventBus eventBus){
+    public CitiesListDownloadController(CitiesListModel citiesListModel, EventBus eventBus) {
         this.citiesListModel = citiesListModel;
         this.eventBus = eventBus;
-        eventBus.addHandler(CitiesModelLoadCommand.TYPE,new MyCitiesModelCommandHandler());
+        eventBus.addHandler(CitiesModelLoadCommand.TYPE, new MyCitiesModelCommandHandler());
 
     }
 
