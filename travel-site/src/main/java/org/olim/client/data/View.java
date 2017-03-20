@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.web.bindery.event.shared.EventBus;
 import org.olim.client.AppMessages;
+import org.olim.client.views.CityTable;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -40,8 +41,8 @@ public class View extends HorizontalPanel {
         public void onCitiesModelChanged(CitiesModelChangedEvent event) {
 
             VerticalPanel cityPanel = new VerticalPanel();
-            final CitiesView cityView = new CitiesView(citiesListModel.getData());
-            cityPanel.add(cityView);
+            final CityTable cityTable = new CityTable(citiesListModel.getData());
+            cityPanel.add(cityTable);
             Button readyButton = new Button(messages.doneButton());
             add(cityPanel);
             cityPanel.add(readyButton);
@@ -49,7 +50,7 @@ public class View extends HorizontalPanel {
             readyButton.addClickHandler(new ClickHandler() {
                 @Override
                 public void onClick(ClickEvent event) {
-                    path = cityView.getPath();
+                    path = cityTable.getPath();
                     eventBus.fireEvent(PersonalPathUploadComand.create());
                 }
             });

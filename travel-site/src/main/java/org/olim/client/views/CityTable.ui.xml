@@ -11,7 +11,6 @@
                 <cl:CityLine ui:field="addCityLine"/>
                 <g:HorizontalPanel>
                     <g:Button ui:field="addButton"/>
-                    <g:Button ui:field="doneButton"/>
                 </g:HorizontalPanel>
             </g:VerticalPanel>
         </div>
