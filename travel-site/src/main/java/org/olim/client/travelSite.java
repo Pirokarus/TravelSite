@@ -1,12 +1,7 @@
 package org.olim.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.RootPanel;
 import org.olim.client.config.Injector;
-import org.olim.client.data.CitiesView;
-import org.olim.client.data.TestCountriesList;
-import org.olim.client.views.CityLine;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
