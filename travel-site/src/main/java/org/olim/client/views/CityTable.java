@@ -19,7 +19,7 @@ public class CityTable extends Composite {
     private static CityTableUiBinder UiBinder = GWT.create(CityTableUiBinder.class);
     @UiField
     VerticalPanel cityPanel;
-    @UiField
+    @UiField(provided = true)
     CityLine addCityLine;
     @UiField
     Button addButton;
@@ -29,11 +29,12 @@ public class CityTable extends Composite {
     private List<CountryBox> countriesList;
     private List<Station> path;
     public CityTable(List<CountryBox> countriesList) {
-        initWidget(UiBinder.createAndBindUi(this));
+
         addCityLine = new CityLine(countriesList);
         addButton.setText(messages.addButton());
         doneButton.setText(messages.doneButton());
         this.countriesList = countriesList;
+        initWidget(UiBinder.createAndBindUi(this));
     }
     @UiTemplate("CityTable.ui.xml")
     interface CityTableUiBinder extends UiBinder<Widget, CityTable> {

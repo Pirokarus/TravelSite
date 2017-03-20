@@ -67,6 +67,12 @@ public class CityLine extends Composite {
         outDateField.setValue(outDate);
     }
 
+    public CityLine() {
+        initWidget(uiBinder.createAndBindUi(this));
+        this.res = GWT.create(CityStyleRecources.class);
+        res.style().ensureInjected();
+    }
+
     private void getSuggestions(List<CountryBox> countriesList) {
 
         final List<String> AllCities = new ArrayList<String>();
