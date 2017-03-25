@@ -57,6 +57,12 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>com.github.branflake2267</groupId>
+      <artifactId>gwt-maps-api</artifactId>
+      <version>3.10.0-alpha-7</version>
+    </dependency>
+
 
     <dependency>
       <groupId>com.google.gwt.inject</groupId>

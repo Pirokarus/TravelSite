@@ -13,7 +13,7 @@ public class CitiesListModel extends ModelBase {
 
 
     @Inject
-    public CitiesListModel(EventBus eventBus) {
+    public CitiesListModel() {
 
     }
 

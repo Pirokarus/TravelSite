@@ -4,6 +4,8 @@ package org.olim.client.data;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.maps.client.MapOptions;
+import com.google.gwt.maps.client.MapWidget;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -14,6 +16,9 @@ import org.olim.client.views.CityTable;
 
 import javax.inject.Inject;
 import java.util.List;
+
+//import com.google.gwt.maps.client.MapWidget;
+//import com.google.gwt.maps.client.geom.LatLng;
 
 public class View extends HorizontalPanel {
 
@@ -40,12 +45,23 @@ public class View extends HorizontalPanel {
         @Override
         public void onCitiesModelChanged(CitiesModelChangedEvent event) {
 
+            //LatLng latLng = LatLng.newInstance(30000,30000);
+            MapOptions mapOptions = MapOptions.newInstance();
+            MapWidget mapWidget = new MapWidget(mapOptions);
+            mapWidget.setSize("500px", "500px");
+
+
+            HorizontalPanel mainPanel = new HorizontalPanel();
+            mainPanel.add(mapWidget);
+
             VerticalPanel cityPanel = new VerticalPanel();
             final CityTable cityTable = new CityTable(citiesListModel.getData());
             cityPanel.add(cityTable);
             Button readyButton = new Button(messages.doneButton());
-            add(cityPanel);
+            mainPanel.add(cityPanel);
             cityPanel.add(readyButton);
+
+            add(mainPanel);
 
             readyButton.addClickHandler(new ClickHandler() {
                 @Override
