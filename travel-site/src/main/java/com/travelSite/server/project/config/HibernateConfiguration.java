@@ -14,9 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-/**
- * Created by glak0514 on 27.03.2017.
- */
+
 @Configuration
 @EnableTransactionManagement
 @ComponentScan({"com.travelSite.server.project"})

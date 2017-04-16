@@ -20,7 +20,7 @@ public class EndPoint {
     @Produces(MediaType.APPLICATION_JSON)
     public List<CityBox> getCitiesList(Req req){
 
-        List<CityBox> cityList = new DBManager().getCitiesList("en");
+        List<CityBox> cityList = new DBManager().getCitiesList(req.local);
 
         //List<CityBox> cityList = new TestCountriesList().getCityBoxes();
 

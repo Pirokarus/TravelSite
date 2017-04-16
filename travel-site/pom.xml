@@ -178,7 +178,7 @@
         <configuration>
           <runTarget>travelSite.html</runTarget>
           <modules>
-            <module>org.olim.travelSite</module>
+            <module>com.travelSite.travelSite</module>
           </modules>
         </configuration>
       </plugin>
