@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='travelSite'>
+
+  <public path='public'/>
+
+  <!-- Inherit the core Web Toolkit stuff.                        -->
+  <inherits name='com.google.gwt.user.User' />
+
+  <!-- Inherit the default GWT style sheet.  You can change       -->
+  <!-- the theme of your GWT application by uncommenting          -->
+  <!-- any one of the following lines.                            -->
+  <inherits name='com.google.gwt.user.theme.standard.Standard' />
+  <inherits name="com.google.gwt.inject.Inject"/>
+  <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+  <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+  <inherits name="com.google.gwt.uibinder.UiBinder"/>
+  <!-- Other module inherits                                      -->
+  <inherits name="com.google.gwt.i18n.I18N"/>
+
+  <!-- -->
+
+  <inherits name="org.fusesource.restygwt.RestyGWT"/>
+  <inherits name="com.google.gwt.logging.Logging"/>
+
+  <!-- -->
+
+
+  <extend-property name="locale" values="ru" />
+  <!-- Specify the app entry point class.                         -->
+  <entry-point class='com.travelSite.client.TravelSite' />
+
+  <!-- Specify the paths for translatable code                    -->
+  <source path='client' />
+  <source path='shared' />
+
+  <!--<inherits name="com.google.gwt.maps.GoogleMaps" />-->
+  <inherits name='com.google.gwt.maps.Maps' />
+  <!--<script src="http://maps.google.com/maps?key=AIzaSyCQkdsaFcYvchEPk4qtdGTVmrsUovAhc5Q" />
+-->
+</module>

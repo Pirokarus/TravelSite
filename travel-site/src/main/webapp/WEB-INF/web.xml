@@ -6,8 +6,23 @@
 <web-app>
 
   <!-- Default page to serve -->
+  <!--
   <welcome-file-list>
     <welcome-file>travelSite.html</welcome-file>
-  </welcome-file-list>
+  </welcome-file-list>-->
+
+  <servlet>
+    <servlet-name>RestApi</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>com.travelSite.server.service</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>RestApi</servlet-name>
+    <url-pattern>travelSite/rest/*</url-pattern>
+  </servlet-mapping>
 
 </web-app>

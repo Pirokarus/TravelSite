@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to="travelSite">
+  <!-- Inherit our applications main module.                      -->
+  <inherits name='org.olim.travelSite' />
+    <inherits name="com.google.gwt.core.Core"/>
+  <inherits name="com.google.web.bindery.event.Event"/>
+    <inherits name="com.travelSite.travelSite"/>
+
+</module>
