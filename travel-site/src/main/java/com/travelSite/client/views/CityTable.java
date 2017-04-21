@@ -9,12 +9,11 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.*;
 import com.travelSite.client.AppMessages;
-import com.travelSite.client.data.Station;
-import com.travelSite.shared.CityBox;
+import com.travelSite.client.data.Location;
+import com.travelSite.shared.City;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class CityTable extends Composite {
     private static CityTableUiBinder UiBinder = GWT.create(CityTableUiBinder.class);
@@ -25,16 +24,17 @@ public class CityTable extends Composite {
     @UiField(provided = true)
     Button addButton;
     private AppMessages messages = GWT.create(AppMessages.class);
-    private List<CityBox> citiesList;
-    private List<Station> path;
+    private List<City> citiesList;
+    private List<Location> path;
 
-    public CityTable(List<CityBox> citiesList) {
+    public CityTable(List<City> citiesList) {
 
         addCityLine = new CityLine(citiesList);
         addButton = new Button(messages.addButton());
         this.citiesList = citiesList;
         initWidget(UiBinder.createAndBindUi(this));
         path = new ArrayList<>();
+        addButton.setStyleName("addButton");
 
     }
     @UiTemplate("CityTable.ui.xml")
@@ -43,32 +43,38 @@ public class CityTable extends Composite {
 
     @UiHandler("addButton")
     void doAddClick(ClickEvent event){
-        Button removeButton = new Button("-");
-        CityLine chosenCity = new CityLine(this.citiesList, addCityLine.getCity(),addCityLine.getInDate(),addCityLine.getOutDate());
-        final HorizontalPanel chosenCityPanel = new HorizontalPanel();
+        if(path.size()<12) {
+            Button removeButton = new Button("-");
+            removeButton.setStyleName("removeButton");
+            CityLine chosenCity = new CityLine(this.citiesList,
+                    addCityLine.getCity(),
+                    addCityLine.getInDate(),
+                    addCityLine.getOutDate());
 
-        chosenCityPanel.add(removeButton);
-        chosenCityPanel.add(chosenCity);
+            final HorizontalPanel chosenCityPanel = new HorizontalPanel();
+            chosenCityPanel.add(removeButton);
+            chosenCityPanel.add(chosenCity);
+            cityPanel.add(chosenCityPanel);
 
-        cityPanel.add(chosenCityPanel);
+            final Location location = new Location(addCityLine.getCity(),
+                    addCityLine.getInDate(),
+                    addCityLine.getOutDate());
+            path.add(location);
 
-        final Station station = new Station(addCityLine.getCity(), addCityLine.getInDate(), addCityLine.getOutDate());
-        path.add(station);
-
-        removeButton.addClickHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent event) {
-                cityPanel.remove(chosenCityPanel);
-                path.remove(station);
-            }
-        });
-
-        addCityLine.cityField.setValue("");
-        addCityLine.inDateField.setValue(addCityLine.getOutDate());
-        addCityLine.outDateField.setValue(null);
+            removeButton.addClickHandler(new ClickHandler() {
+                @Override
+                public void onClick(ClickEvent event) {
+                    cityPanel.remove(chosenCityPanel);
+                    path.remove(location);
+                }
+            });
+            addCityLine.cityField.setValue("");
+            addCityLine.inDateField.setValue(addCityLine.getOutDate());
+            addCityLine.outDateField.setValue(null);
+        }
     }
 
-    public List<Station> getPath() {
+    public List<Location> getPath() {
         return path;
     }
 

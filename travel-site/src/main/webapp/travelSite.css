@@ -1,7 +1,3 @@
-/** Add css rules here for your application. */
-
-
-/** Example rules used by the template application (remove for your app) */
 h1 {
   font-size: 2em;
   font-weight: bold;
@@ -11,33 +7,50 @@ h1 {
   text-align: center;
 }
 
-.sendButton {
-  display: block;
-  font-size: 16pt;
+body{
+  background: blue;
 }
 
-.sitePanel{
-  background-size: 100%;
-  color: mediumblue;
-  background-color: mediumblue;
-}
-
-/** Most GWT widgets already have a style name defined */
-.gwt-DialogBox {
-  width: 400px;
-
-}
-
-.dialogVPanel {
+.removeButton {
+  border-radius: 25px 25px 25px 25px;
+  width: 40px;
+  height: 40px;
   margin: 5px;
-  background-color: mediumblue;
+  font-size: 200%;
+  font-weight: bolder;
+  text-align: center;
+  vertical-align: super;
+  background-color: darkorange;
+  color: white;
 }
 
-.serverResponseLabelError {
-  color: red;
+.addButton {
+  border-radius: 4px 4px 4px 4px;
+  width: 180px;
+  height: 40px;
+  position: relative;
+  left: 386px;
+  top: 55px;
+  font-size: 100%;
+  font-weight: bolder;
+  background-color: darkorange;
+  color: white;
 }
 
-/** Set ids using widget.getElement().setId("idOfElement") */
-#closeButton {
-  margin: 15px 6px 6px;
+.doneButton{
+  border-radius: 4px 4px 4px 4px;
+  width: 180px;
+  height: 40px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 100%;
+  font-weight: bolder;
+  background-color: darkorange;
+  color: white;
+}
+
+.mapStyle {
+  height: 800px;
+  width: 700px;
 }

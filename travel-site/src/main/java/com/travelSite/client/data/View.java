@@ -18,7 +18,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.web.bindery.event.shared.EventBus;
 import com.travelSite.client.AppMessages;
 import com.travelSite.client.views.CityTable;
-import com.travelSite.shared.CityBox;
+import com.travelSite.shared.City;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -30,7 +30,7 @@ public class View extends HorizontalPanel {
 
     private static CitiesListModel citiesListModel;
     private EventBus eventBus;
-    private List<Station> path;
+    private List<Location> path;
     private String lang = "en";
     private AppMessages messages = GWT.create(AppMessages.class);
 
@@ -43,12 +43,12 @@ public class View extends HorizontalPanel {
 
     }
 
-    public List<Station> getPath() {
+    public List<Location> getPath() {
         return path;
     }
 
     private class MyCitiesModelChangedHandler implements CitiesModelChangedEventHandler {
-        @Override
+            @Override
         public void onCitiesModelChanged(CitiesModelChangedEvent event) {
 
             LatLng latLng = LatLng.newInstance(50,50);
@@ -56,7 +56,7 @@ public class View extends HorizontalPanel {
             mapOptions.setCenter(latLng);
             mapOptions.setZoom(4);
             MapWidget mapWidget = new MapWidget(mapOptions);
-            mapWidget.setSize("700px", "700px");
+            //mapWidget.setSize("700px", "700px");
 
             MVCArray<LatLng> latLngMVCArray = MVCArray.newInstance();
             latLngMVCArray.setAt(1,LatLng.newInstance(50,55));
@@ -67,36 +67,17 @@ public class View extends HorizontalPanel {
 
             VerticalPanel cityPanel = new VerticalPanel();
 
-            List<CityBox> citiesList = citiesListModel.getData();
+            List<City> citiesList = citiesListModel.getData();
             final CityTable cityTable = new CityTable(citiesList);
             cityPanel.add(cityTable);
 
-
-                for(final CityBox city:citiesList){
-
-                    LatLng centerIcon = LatLng.newInstance(city.getLatitude(), city.getLongitude());
-                    MarkerImage markerImage = MarkerImage.newInstance("http://www.google.com/mapfiles/markerA.png");
-                    MarkerOptions mOpts = MarkerOptions.newInstance();
-                    mOpts.setIcon(markerImage);
-                    mOpts.setPosition(centerIcon);
-
-                    Marker marker = Marker.newInstance(mOpts);
-                    marker.setMap(mapWidget);
-
-                    marker.addClickHandler(new ClickMapHandler() {
-                        @Override
-                        public void onEvent(ClickMapEvent clickMapEvent) {
-                            cityTable.getCityLine().setCity(city.getName() + ", " + city.getCountry());
-                        }
-                    });
-
-            }
-
-
+                for(final City city:citiesList){ setMarker(city, mapWidget, cityTable);}
 
             Button readyButton = new Button(messages.doneButton());
             mainPanel.add(cityPanel);
             cityPanel.add(readyButton);
+            readyButton.setStyleName("doneButton");
+            mapWidget.setStyleName("mapStyle");
 
             add(mainPanel);
 
@@ -107,7 +88,25 @@ public class View extends HorizontalPanel {
                     eventBus.fireEvent(PersonalPathUploadComand.create());
                 }
             });
+        }
 
+        private void setMarker(City city, MapWidget mapWidget, CityTable cityTable){
+
+            LatLng centerIcon = LatLng.newInstance(city.getLatitude(), city.getLongitude());
+            MarkerImage markerImage = MarkerImage.newInstance("http://www.google.com/mapfiles/markerA.png");
+            MarkerOptions mOpts = MarkerOptions.newInstance();
+            mOpts.setIcon(markerImage);
+            mOpts.setPosition(centerIcon);
+
+            Marker marker = Marker.newInstance(mOpts);
+            marker.setMap(mapWidget);
+
+            marker.addClickHandler(new ClickMapHandler() {
+                @Override
+                public void onEvent(ClickMapEvent clickMapEvent) {
+                    cityTable.getCityLine().setCity(city.getName() + ", " + city.getCountry());
+                }
+            });
         }
     }
 }

@@ -1,32 +1,29 @@
 package com.travelSite.client.data;
 
-
 import com.google.web.bindery.event.shared.HandlerRegistration;
-import com.travelSite.shared.CityBox;
+import com.travelSite.shared.City;
 
 import javax.inject.Inject;
 import java.util.List;
 
 public class CitiesListModel extends ModelBase {
 
-    private List<CityBox> cities;
+    public void setData(List<City> cities) {
+        if (this.cities != cities) {
+            this.cities = cities;
+            fireEvent(CitiesModelChangedEvent.create());
+        }
+    }
 
+    private List<City> cities;
 
     @Inject
     public CitiesListModel() {
 
     }
 
-    public List<CityBox> getData() {
+    public List<City> getData() {
         return cities;
-    }
-
-    public void setData(List<CityBox> countries) {
-        if (this.cities != countries) {
-            this.cities = countries;
-
-            fireEvent(CitiesModelChangedEvent.create());
-        }
     }
 
     public final HandlerRegistration addFirstModelChangedHandler(CitiesModelChangedEventHandler handler) {

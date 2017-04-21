@@ -5,13 +5,13 @@ import java.util.List;
 
 public class PersonalPathModel extends ModelBase {
 
-    private List<Station> cityList;
+    private List<Location> cityList;
 
     @Inject
     public PersonalPathModel() {
     }
 
-    public void setCityList(List<Station> cityList) {
+    public void setCityList(List<Location> cityList) {
         this.cityList = cityList;
     }
 }

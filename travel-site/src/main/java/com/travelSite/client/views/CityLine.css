@@ -1,22 +1,23 @@
 .cityStyle{
     border: 1px solid #AACCEE;
     display: block;
-    font-size: 12px;
-    margin: 0 0 5px;
+    font-size: 16px;
+    margin: 2px 2px 5px;
     padding: 3px;
-    width: 203px;
-}
-.background{
-    background-color: blue;
+    width: 200px;
+    height: 40px;
 
 }
-.removeButton{
-    border: 1px solid #3399DD;
-    color: #FFFFFF;
-    background: #555555;
-    font-size: 11px;
-    font-weight: bold;
-    margin: 0 5px 0 0;
-    padding: 4px 10px 5px;
-    text-shadow: 0 -1px 0 #3399DD;
+.background{
+    position: absolute;
+    right: 10px;
+}
+.dateStyle{
+    border: 1px solid #AACCEE;
+    display: block;
+    font-size: 16px;
+    margin: 2px 2px 5px;
+    padding: 3px;
+    width: 140px;
+    height: 40px;
 }

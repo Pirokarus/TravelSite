@@ -1,8 +1,6 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'
-             xmlns:cl="urn:import:org.olim.client.views"
-             xmlns:views="urn:import:org.travelSite.client.views" xmlns:views2="urn:import:com.travelSite.client.views">
-
+             xmlns:views2="urn:import:com.travelSite.client.views">
     <g:HTMLPanel>
         <div align="centr">
             <g:VerticalPanel>
@@ -10,7 +8,7 @@
                 </g:VerticalPanel>
                 <views2:CityLine ui:field="addCityLine"/>
                 <g:HorizontalPanel>
-                    <g:Button ui:field="addButton"/>
+                    <g:Button ui:field="addButton" />
                 </g:HorizontalPanel>
             </g:VerticalPanel>
         </div>

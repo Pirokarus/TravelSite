@@ -10,9 +10,7 @@ public interface CityStyleRecources extends ClientBundle {
 
     public interface MyCss extends CssResource {
         String cityStyle();
-
         String background();
-
-        String removeButton();
+        String dateStyle();
     }
 }

@@ -7,7 +7,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.datepicker.client.DateBox;
-import com.travelSite.shared.CityBox;
+import com.travelSite.client.AppMessages;
+import com.travelSite.shared.City;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,9 +26,10 @@ public class CityLine extends Composite {
     DateBox inDateField;
     @UiField
     DateBox outDateField;
-    private List<CityBox> citiesList;
+    private List<City> citiesList;
+    private AppMessages messages = GWT.create(AppMessages.class);
 
-    public CityLine(List<CityBox> citiesList) {
+    public CityLine(List<City> citiesList) {
 
         this.citiesList = citiesList;
         getSuggestions(citiesList);
@@ -44,9 +46,12 @@ public class CityLine extends Composite {
         });
         inDateField.setFormat(new DateBox.DefaultFormat(DateTimeFormat.getLongDateFormat()));
         outDateField.setFormat(new DateBox.DefaultFormat(DateTimeFormat.getLongDateFormat()));
+        cityField.getElement().setPropertyString("placeholder", messages.citySelect());
+        inDateField.getElement().setPropertyString("placeholder", messages.inDateSelect());
+        outDateField.getElement().setPropertyString("placeholder", messages.outDateSelect());
 
     }
-    public CityLine(List<CityBox> citiesList, String city, Date inDate, Date outDate) {
+    public CityLine(List<City> citiesList, String city, Date inDate, Date outDate) {
         this.citiesList = citiesList;
         getSuggestions(citiesList);
         cityField = new SuggestBox(oracleCitiesList);
@@ -65,6 +70,9 @@ public class CityLine extends Composite {
         cityField.setValue(city);
         inDateField.setValue(inDate);
         outDateField.setValue(outDate);
+        cityField.getElement().setPropertyString("placeholder", messages.citySelect());
+        inDateField.getElement().setPropertyString("placeholder", messages.inDateSelect());
+        outDateField.getElement().setPropertyString("placeholder", messages.outDateSelect());
     }
 
     public CityLine() {
@@ -73,17 +81,15 @@ public class CityLine extends Composite {
         res.style().ensureInjected();
     }
 
-    private void getSuggestions(List<CityBox> citiesList) {
+    private void getSuggestions(List<City> citiesList) {
 
         final List<String> AllCities = new ArrayList<String>();
-        for (CityBox city : citiesList) {
+        for (City city : citiesList) {
             AllCities.add(city.getName() + ", " + city.getCountry());
 
         }
         oracleCitiesList.addAll(AllCities);
         oracleCitiesList.setDefaultSuggestionsFromText(AllCities);
-
-
     }
 
     public Date getInDate() {
@@ -113,23 +119,4 @@ public class CityLine extends Composite {
     @UiTemplate("CityLine.ui.xml")
     interface CityLineUiBinder extends UiBinder<Widget, CityLine> {
     }
-
-
-
-
-
-
-    /*
-    @UiHandler("cityField")
-    void doClick(ClickEvent event){
-        cityField.showSuggestionList();
-    }
-/*
-    @UiHandler("removeButton")
-    void doClick(ClickEvent event){
-
-    }
-
-*/
-
 }

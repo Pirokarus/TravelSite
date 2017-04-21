@@ -20,10 +20,7 @@ public class ModelBase {
         this.eventBus.fireEvent(event);
     }
 
-
     protected final <H> HandlerRegistration addHandler(Event.Type<H> type, H handler) {
         return this.eventBus.addHandler(type, handler);
     }
-
-
 }

@@ -1,15 +1,14 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
              xmlns:g='urn:import:com.google.gwt.user.datepicker.client'
-             xmlns:res='urn:import:org.olim.client.views.CityStyleRecources'
->
+             xmlns:res='urn:import:org.olim.client.views.CityStyleRecources'>
     <ui:with type="com.travelSite.client.views.CityStyleRecources" field="res"/>
-    <gwt:HTMLPanel>
-        <div align="center">
+    <gwt:HTMLPanel res:styleName="{res.style.background}">
+        <div align="right">
             <gwt:HorizontalPanel>
-                <gwt:SuggestBox ui:field="cityField"  />
-                <g:DateBox ui:field="inDateField"/>
-                <g:DateBox ui:field="outDateField"/>
+                <gwt:SuggestBox ui:field="cityField" res:styleName="{res.style.cityStyle}" />
+                <g:DateBox ui:field="inDateField" res:styleName="{res.style.dateStyle}"/>
+                <g:DateBox ui:field="outDateField" res:styleName="{res.style.dateStyle}"/>
             </gwt:HorizontalPanel>
         </div>
     </gwt:HTMLPanel>

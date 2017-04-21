@@ -1,6 +1,5 @@
 package com.travelSite.client;
 
-
 import com.google.web.bindery.event.shared.EventBus;
 import com.travelSite.client.data.*;
 
@@ -15,7 +14,12 @@ public class LifeCycle {
     private PersonalPathController pathController;
 
     @Inject
-    public LifeCycle(EventBus eventBus, CitiesListModel citiesListModel, View view, CitiesListDownloadController citiesListDownloadController, PersonalPathModel pathModel, PersonalPathController pathController) {
+    public LifeCycle(EventBus eventBus,
+                     CitiesListModel citiesListModel,
+                     View view,
+                     CitiesListDownloadController citiesListDownloadController,
+                     PersonalPathModel pathModel,
+                     PersonalPathController pathController) {
         this.eventBus = eventBus;
         this.citiesListModel = citiesListModel;
         this.view = view;
@@ -26,7 +30,5 @@ public class LifeCycle {
 
     public void start() {
         eventBus.fireEvent(CitiesModelLoadCommand.create());
-
     }
-
 }

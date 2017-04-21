@@ -3,11 +3,10 @@ package com.travelSite.client.data;
 import com.google.gwt.event.shared.GwtEvent;
 
 public class CitiesModelChangedEvent extends GwtEvent<CitiesModelChangedEventHandler> {
+
     public final static Type<CitiesModelChangedEventHandler> TYPE = new Type<>();
 
-    private CitiesModelChangedEvent() {
-
-    }
+    private CitiesModelChangedEvent() {}
 
     public static CitiesModelChangedEvent create() {
         return new CitiesModelChangedEvent();

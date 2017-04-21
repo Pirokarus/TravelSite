@@ -20,6 +20,7 @@ public class PersonalPathUploadComand extends GwtEvent<PersonalPathUploadComandH
 
     @Override
     protected void dispatch(PersonalPathUploadComandHandler handler) {
+
         handler.onPersonalPathUploadComand(this);
     }
 }

@@ -1,7 +1,7 @@
 package com.travelSite.client.service;
 
-import com.travelSite.shared.CityBox;
-import com.travelSite.shared.Req;
+import com.travelSite.shared.City;
+import com.travelSite.shared.Locale;
 import org.fusesource.restygwt.client.MethodCallback;
 import org.fusesource.restygwt.client.RestService;
 
@@ -13,5 +13,5 @@ import java.util.List;
 public interface EndPoint extends RestService{
     @GET
     @Path("/load")
-    void  getCitiesList(Req req, MethodCallback<List<CityBox>> callback);
+    void  getCitiesList(MethodCallback<List<City>> callback);
 }

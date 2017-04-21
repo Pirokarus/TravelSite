@@ -1,12 +1,10 @@
 package com.travelSite.client.data;
 
-
 import com.google.gwt.core.client.GWT;
 import com.google.web.bindery.event.shared.EventBus;
 import com.travelSite.client.service.EndPoint;
-import com.travelSite.shared.CityBox;
-import com.travelSite.shared.Req;
-import com.travelSite.shared.TestCountriesList;
+import com.travelSite.shared.City;
+import com.travelSite.shared.Locale;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 
@@ -32,19 +30,16 @@ public class CitiesListDownloadController {
 
         @Override
         public void onCitiesModelLoadComand(CitiesModelLoadCommand command) {
-            //citiesListModel.setData(new TestCountriesList().getCityBoxes());
 
-            Req req = new Req("en");
-            endPoint.getCitiesList(req, new MethodCallback<List<CityBox>>() {
+            endPoint.getCitiesList(new MethodCallback<List<City>>() {
                 @Override
                 public void onFailure(Method method, Throwable throwable) {
 
                 }
 
                 @Override
-                public void onSuccess(Method method, List<CityBox> cityBoxes) {
-
-                    citiesListModel.setData((ArrayList<CityBox>)cityBoxes);
+                public void onSuccess(Method method, List<City> cities) {
+                    citiesListModel.setData((ArrayList<City>) cities);
                 }
             });
         }
