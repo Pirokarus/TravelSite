@@ -11,10 +11,7 @@ import com.google.gwt.maps.client.events.click.ClickMapEvent;
 import com.google.gwt.maps.client.events.click.ClickMapHandler;
 import com.google.gwt.maps.client.mvc.MVCArray;
 import com.google.gwt.maps.client.overlays.*;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.*;
 import com.google.web.bindery.event.shared.EventBus;
 import com.travelSite.client.AppMessages;
 import com.travelSite.client.views.CityTable;
@@ -56,7 +53,6 @@ public class View extends HorizontalPanel {
             mapOptions.setCenter(latLng);
             mapOptions.setZoom(4);
             MapWidget mapWidget = new MapWidget(mapOptions);
-            //mapWidget.setSize("700px", "700px");
 
             MVCArray<LatLng> latLngMVCArray = MVCArray.newInstance();
             latLngMVCArray.setAt(1,LatLng.newInstance(50,55));
@@ -75,6 +71,7 @@ public class View extends HorizontalPanel {
 
             Button readyButton = new Button(messages.doneButton());
             mainPanel.add(cityPanel);
+            setStyleName("background");
             cityPanel.add(readyButton);
             readyButton.setStyleName("doneButton");
             mapWidget.setStyleName("mapStyle");

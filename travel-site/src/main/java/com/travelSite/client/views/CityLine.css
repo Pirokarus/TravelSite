@@ -6,11 +6,11 @@
     padding: 3px;
     width: 200px;
     height: 40px;
-
 }
 .background{
     position: absolute;
     right: 10px;
+    background-color: blue;
 }
 .dateStyle{
     border: 1px solid #AACCEE;
