@@ -17,6 +17,7 @@ import java.util.List;
 
 public class CityTable extends Composite {
     private static CityTableUiBinder UiBinder = GWT.create(CityTableUiBinder.class);
+
     @UiField
     VerticalPanel cityPanel;
     @UiField(provided = true)
@@ -35,7 +36,7 @@ public class CityTable extends Composite {
         initWidget(UiBinder.createAndBindUi(this));
         path = new ArrayList<>();
         addButton.setStyleName("addButton");
-
+        addCityLine.setStyleName("addCityStyle");
     }
     @UiTemplate("CityTable.ui.xml")
     interface CityTableUiBinder extends UiBinder<Widget, CityTable> {
@@ -43,7 +44,7 @@ public class CityTable extends Composite {
 
     @UiHandler("addButton")
     void doAddClick(ClickEvent event){
-        if(path.size()<12) {
+        if(path.size()<15) {
             Button removeButton = new Button("-");
             removeButton.setStyleName("removeButton");
             CityLine chosenCity = new CityLine(this.citiesList,

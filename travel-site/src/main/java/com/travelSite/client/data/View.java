@@ -71,7 +71,6 @@ public class View extends HorizontalPanel {
 
             Button readyButton = new Button(messages.doneButton());
             mainPanel.add(cityPanel);
-            setStyleName("background");
             cityPanel.add(readyButton);
             readyButton.setStyleName("doneButton");
             mapWidget.setStyleName("mapStyle");

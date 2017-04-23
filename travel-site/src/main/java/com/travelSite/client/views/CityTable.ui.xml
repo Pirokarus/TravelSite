@@ -6,7 +6,9 @@
             <g:VerticalPanel>
                 <g:VerticalPanel ui:field="cityPanel">
                 </g:VerticalPanel>
-                <views2:CityLine ui:field="addCityLine"/>
+                <g:HorizontalPanel>
+                    <views2:CityLine ui:field="addCityLine"/>
+                </g:HorizontalPanel>
                 <g:HorizontalPanel>
                     <g:Button ui:field="addButton" />
                 </g:HorizontalPanel>
